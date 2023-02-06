@@ -20,7 +20,26 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
-
+  use({
+      "aserowy/tmux.nvim",
+      config = function() return require("tmux").setup() end
+  })
+  use('mfussenegger/nvim-dap')
+  use({
+      "hrsh7th/nvim-cmp",
+      requires = {
+          { "hrsh7th/cmp-nvim-lsp" },
+          { "hrsh7th/cmp-vsnip" },
+          { "hrsh7th/vim-vsnip" },
+      },
+  })
+  use "nvim-lua/plenary.nvim"
+  use({
+      "scalameta/nvim-metals",
+      requires = {
+          "nvim-lua/plenary.nvim",
+      },
+  })
   use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
   use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
